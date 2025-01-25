@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class GasController : MonoBehaviour
@@ -12,9 +11,13 @@ public class GasController : MonoBehaviour
 
     private float maxVelocity = 5f;
 
+ 
     private void OnEnable()
     {
         GameEvents.OnGameOver.AddListener(OnGameOver);
+
+ 
+        
     }
 
     private void OnDisable()
@@ -51,21 +54,16 @@ public class GasController : MonoBehaviour
     {
         var otherPlayer = other.gameObject.GetComponent<SheepController>();
         if (otherPlayer)
-        {
             if (playerId != otherPlayer.playerId)
             {
                 gameObject.SetActive(false);
                 Debug.Log($"Gas {playerId} Collide with {otherPlayer.playerId}");
                 otherPlayer.DoDamage();
             }
-        }
     }
 
     private void Update()
     {
-        if (rb.linearVelocity.magnitude > maxVelocity)
-        {
-            rb.linearVelocity = rb.linearVelocity.normalized * maxVelocity;
-        }
+        if (rb.linearVelocity.magnitude > maxVelocity) rb.linearVelocity = rb.linearVelocity.normalized * maxVelocity;
     }
 }

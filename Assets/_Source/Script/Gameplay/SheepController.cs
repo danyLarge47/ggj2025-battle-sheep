@@ -8,8 +8,9 @@ public class SheepController : MonoBehaviour
 {
     public int playerId;
     public Rigidbody2D rb2d;
-    public SpriteRenderer sprite;
-    public SpriteRenderer playerColorIndicator;
+    public Transform spriteParent;
+    public SpriteRenderer costume;
+    public SpriteRenderer faceExpression;
     public float accel;
     public float maxVelocity;
     public float spawnFartRange;
@@ -19,7 +20,6 @@ public class SheepController : MonoBehaviour
     public sGameConfig gameConfig;
     public int currentHealth;
     public List<SpriteRenderer> health;
-
     public Actions onHit;
 
     private void OnEnable()
@@ -28,11 +28,11 @@ public class SheepController : MonoBehaviour
         {
             case 1:
                 GameEvents.OnInputAction_Movement_P1.AddListener(MovePlayer);
-                playerColorIndicator.color = gameConfig.player1;
+                costume.sprite = gameConfig.costume1;
                 break;
             case 2:
                 GameEvents.OnInputAction_Movement_P2.AddListener(MovePlayer);
-                playerColorIndicator.color = gameConfig.player2;
+                costume.sprite = gameConfig.costume2;
                 break;
             default:
                 Debug.Log($"Player {playerId} undefined");
@@ -79,7 +79,7 @@ public class SheepController : MonoBehaviour
         // Debug.Log($"MovePlayer {input}");
         rb2d.AddForce(input * accel);
         tempScale.x = input.x < 0 ? 1 : -1;
-        sprite.transform.localScale = tempScale;
+        spriteParent.transform.localScale = tempScale;
         currentDir = input;
     }
 
@@ -87,16 +87,14 @@ public class SheepController : MonoBehaviour
     {
         // Clamp velocity
         if (rb2d.linearVelocity.magnitude > maxVelocity)
-        {
             rb2d.linearVelocity = rb2d.linearVelocity.normalized * maxVelocity;
-        }
-
         currentVelocity = rb2d.linearVelocity.magnitude;
     }
 
     [Button(ButtonSizes.Large)]
     public void Fart()
     {
+        faceExpression.sprite = gameConfig.GetRandomExpression();
         GameEvents.SpawnGas.Invoke(this);
     }
 
@@ -109,20 +107,15 @@ public class SheepController : MonoBehaviour
 
     public void DoDamage()
     {
+        faceExpression.sprite = gameConfig.GetRandomExpression();
         onHit?.Run();
         currentHealth--;
         UpdateHealthUI();
-        if (currentHealth <= 0)
-        {
-            GameEvents.OnGameOver.Invoke(playerId);
-        }
+        if (currentHealth <= 0) GameEvents.OnGameOver.Invoke(playerId);
     }
 
-    void UpdateHealthUI()
+    private void UpdateHealthUI()
     {
-        for (int i = 0; i < health.Count; i++)
-        {
-            health[i].color = i < currentHealth ? Color.green : Color.black;
-        }
+        for (var i = 0; i < health.Count; i++) health[i].color = i < currentHealth ? Color.green : Color.black;
     }
 }

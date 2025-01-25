@@ -22,5 +22,20 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   targetFrameRate: 60
-  player1: {r: 0.33490568, g: 1, b: 0.98611873, a: 1}
-  player2: {r: 1, g: 0.2028302, b: 0.680436, a: 1}
+  player1: {r: 0.85098046, g: 0.1137255, b: 0.06666667, a: 1}
+  player2: {r: 0.16078432, g: 0.454902, b: 0.82745105, a: 1}
+  costume1: {fileID: 21300000, guid: 4821ed889fae4e5488e8e486fbbf7c53, type: 3}
+  costume2: {fileID: 21300000, guid: 81fe76225d734974ebf815982d649efa, type: 3}
+  isGameOn: 1
+  playerWinId: 0
+  faceExpressions:
+  - {fileID: 21300000, guid: 233cf72196a71374487fa619cf99738f, type: 3}
+  - {fileID: 21300000, guid: d040c1d226dbba44ea5a1cafc2c7d71b, type: 3}
+  - {fileID: 21300000, guid: 32ddb329c45fa6946b04e3dbab9d781a, type: 3}
+  - {fileID: 21300000, guid: 16778f392437a7043a131c54e7466385, type: 3}
+  - {fileID: 21300000, guid: 03fdee14d34ba6c4188ed5aaa13fad21, type: 3}
+  - {fileID: 21300000, guid: 93940e39b62f69043bc3abb2bd8890f1, type: 3}
+  - {fileID: 21300000, guid: 46aefc3341cfb784baf82324727a057b, type: 3}
+  - {fileID: 21300000, guid: 40b1d6d2b3850294da15a96d07debd7d, type: 3}
+  - {fileID: 21300000, guid: 7c5f2cacdfb53dc4a9dfc8ae79c641be, type: 3}
+  essentials: {fileID: 0}

@@ -59,7 +59,7 @@ public class SheepController : MonoBehaviour
 
     private void OnGameOver(int player)
     {
-        rb2d.velocity = Vector2.zero;
+        rb2d.linearVelocity = Vector2.zero;
     }
 
     private void Start()
@@ -83,12 +83,12 @@ public class SheepController : MonoBehaviour
     private void Update()
     {
         // Clamp velocity
-        if (rb2d.velocity.magnitude > maxVelocity)
+        if (rb2d.linearVelocity.magnitude > maxVelocity)
         {
-            rb2d.velocity = rb2d.velocity.normalized * maxVelocity;
+            rb2d.linearVelocity = rb2d.linearVelocity.normalized * maxVelocity;
         }
 
-        currentVelocity = rb2d.velocity.magnitude;
+        currentVelocity = rb2d.linearVelocity.magnitude;
     }
 
     [Button(ButtonSizes.Large)]

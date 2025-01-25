@@ -24,7 +24,7 @@ public class GasController : MonoBehaviour
 
     private void OnGameOver(int player)
     {
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
     }
 
     public void SetupGasFromPlayer(SheepController origin)
@@ -63,9 +63,9 @@ public class GasController : MonoBehaviour
 
     private void Update()
     {
-        if (rb.velocity.magnitude > maxVelocity)
+        if (rb.linearVelocity.magnitude > maxVelocity)
         {
-            rb.velocity = rb.velocity.normalized * maxVelocity;
+            rb.linearVelocity = rb.linearVelocity.normalized * maxVelocity;
         }
     }
 }

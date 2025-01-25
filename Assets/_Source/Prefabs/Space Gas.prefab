@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5268592081374790333
 Transform:
   m_ObjectHideFlags: 0
@@ -274,6 +274,7 @@ MonoBehaviour:
   accel: 50
   ownerIndicator: {fileID: 2410424146338895862}
   gameConfig: {fileID: 11400000, guid: a4220ca5af80c9441a939280ff5c6416, type: 2}
+  hitEffects: {fileID: 938121063098797959, guid: 2ea859d0c0b7ab1449e43c2ee09cca0b, type: 3}
 --- !u!1 &2453278863157461062
 GameObject:
   m_ObjectHideFlags: 0

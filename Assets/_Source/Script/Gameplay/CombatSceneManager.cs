@@ -63,6 +63,6 @@ public class CombatSceneManager : MonoBehaviour
     {
         Vector3 spawnPos = Random.insideUnitSphere * 5f;
         spawnPos.z = 0;
-        GameEvents.SpawnPowerUps.Invoke(powerUpPrefab, spawnPos);
+        GameEvents.SpawnFood.Invoke(powerUpPrefab, spawnPos);
     }
 }

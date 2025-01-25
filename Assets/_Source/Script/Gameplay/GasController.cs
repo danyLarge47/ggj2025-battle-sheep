@@ -56,6 +56,8 @@ public class GasController : MonoBehaviour
         if (otherPlayer)
             if (playerId != otherPlayer.playerId)
             {
+                GameEvents.SpawnHitFx.Invoke( other.contacts[0].point);
+
                 gameObject.SetActive(false);
                 Debug.Log($"Gas {playerId} Collide with {otherPlayer.playerId}");
                 otherPlayer.DoDamage();

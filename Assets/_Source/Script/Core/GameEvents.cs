@@ -130,7 +130,8 @@ public class GameEvents
     public static readonly CustomEvents<Vector2> OnInputAction_Movement_P1 = new();
     public static readonly CustomEvents<Vector2> OnInputAction_Movement_P2 = new();
     public static readonly CustomEvents<PoolAbleObject, SheepController> SpawnGasPool = new();
-    public static readonly CustomEvents<PoolAbleObject, Vector3> SpawnPowerUps = new();
+    public static readonly CustomEvents<PoolAbleObject, Vector3> SpawnFood = new();
+    public static readonly CustomEvents< Vector3> SpawnHitFx = new();
     public static readonly CustomEvents<SheepController> SpawnGas = new();
     
     public static readonly CustomEvents<int> OnGameOver = new();

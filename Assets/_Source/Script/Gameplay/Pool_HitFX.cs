@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
-public class Pool_PowerUps : MonoBehaviour
+public class Pool_HitFX : MonoBehaviour
 {
+    [SerializeField] private PoolAbleObject hitFxPrefab;
     [SerializeField] private Transform poolContainer;
     [SerializeField] private List<GameObjectPool> objectPools;
 
@@ -14,27 +14,27 @@ public class Pool_PowerUps : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEvents.SpawnFood.AddListener(Listener_SpawnPowerUps);
+        GameEvents.SpawnHitFx.AddListener(Listener_SpawnHitFX);
     }
 
     private void OnDisable()
     {
-        GameEvents.SpawnFood.RemoveListener(Listener_SpawnPowerUps);
+        GameEvents.SpawnHitFx.RemoveListener(Listener_SpawnHitFX);
     }
 
-    private void Listener_SpawnPowerUps(PoolAbleObject prefab,  Vector3 spawnPos)
+    private void Listener_SpawnHitFX(    Vector3 spawnPos)
     {
         if (objectPools == null) objectPools = new List<GameObjectPool>();
-        var targetPool = objectPools.Find(pool => pool.objectPrefab == prefab);
+        var targetPool = objectPools.Find(pool => pool.objectPrefab == hitFxPrefab);
 
         // Debug.Log($"{name} Spawn Effects  [{prefab.name}]  ");
         if (targetPool == null)
         {
             var poolParent = new GameObject();
-            poolParent.name = "Pool -" + prefab.name;
+            poolParent.name = "Pool -" + hitFxPrefab.name;
             SetParentOrigin(poolParent.transform, poolContainer);
             var newObjectPool = new GameObjectPool();
-            newObjectPool.Initialize(poolParent.transform, prefab);
+            newObjectPool.Initialize(poolParent.transform, hitFxPrefab);
             objectPools.Add(newObjectPool);
             targetPool = newObjectPool;
         }

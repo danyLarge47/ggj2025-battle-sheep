@@ -119,6 +119,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &185555967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 185555968}
+  - component: {fileID: 185555969}
+  m_Layer: 0
+  m_Name: Hit FX Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &185555968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185555967}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 350194004}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &185555969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185555967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd67623cf459cf4f9c78442d1dfc6e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitFxPrefab: {fileID: 938121063098797959, guid: 2ea859d0c0b7ab1449e43c2ee09cca0b, type: 3}
+  poolContainer: {fileID: 185555968}
 --- !u!1001 &313250883
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -233,6 +279,7 @@ Transform:
   m_Children:
   - {fileID: 1708609729}
   - {fileID: 1599002274}
+  - {fileID: 185555968}
   - {fileID: 850654961}
   - {fileID: 774611986}
   - {fileID: 523604835}

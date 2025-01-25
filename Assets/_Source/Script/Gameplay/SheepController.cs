@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using GameCreator.Runtime.VisualScripting;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -18,6 +19,8 @@ public class SheepController : MonoBehaviour
     public sGameConfig gameConfig;
     public int currentHealth;
     public List<SpriteRenderer> health;
+
+    public Actions onHit;
 
     private void OnEnable()
     {
@@ -106,6 +109,7 @@ public class SheepController : MonoBehaviour
 
     public void DoDamage()
     {
+        onHit?.Run();
         currentHealth--;
         UpdateHealthUI();
         if (currentHealth <= 0)

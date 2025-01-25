@@ -1,10 +1,14 @@
+using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Essentials : MonoBehaviour
 {
     static Essentials instance;
     private static bool applicationIsQuitting = false;
     public sGameConfig GameConfig;
+    public CanvasGroup screenFader;
+    
     public static Essentials Instance
     {
         get
@@ -27,7 +31,10 @@ public class Essentials : MonoBehaviour
             return instance;
         }
     }
-
+    private void OnDestroy()
+    {
+        applicationIsQuitting = true;
+    }
     private void Awake()
     {
         if (instance != null)
@@ -41,12 +48,25 @@ public class Essentials : MonoBehaviour
         Application.targetFrameRate = GameConfig.targetFrameRate;
         // Screen.SetResolution(1920, 1080, true);
         DontDestroyOnLoad(gameObject);
+        GameConfig.essentials = this;
     }
 
-  
-
-    private void OnDestroy()
+    public void LoadScene(string sceneName)
     {
-        applicationIsQuitting = true;
+        screenFader.blocksRaycasts = true;
+        screenFader.interactable = true;
+
+
+        screenFader.DOFade(1f, 0.3f).SetEase(Ease.InCirc).OnComplete(delegate
+        {
+            SceneManager.LoadScene(sceneName);
+            screenFader.DOFade(0f, 0.3f).SetEase(Ease.OutCirc).OnComplete(delegate
+            {
+                screenFader.blocksRaycasts = false;
+                screenFader.interactable = false;
+
+            });
+        });
     }
+
 }

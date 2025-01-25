@@ -8,4 +8,17 @@ public class sGameConfig : SerializedScriptableObject
     public Color player1;
     public Color player2;
     public bool isGameOn;
+    public int playerWinId;
+
+
+    public Essentials essentials;
+
+
+    public void LoadScene(string sceneName)
+    {
+        essentials.LoadScene(sceneName);
+    }
+
+
+
 }

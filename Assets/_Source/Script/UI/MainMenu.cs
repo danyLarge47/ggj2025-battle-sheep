@@ -6,8 +6,11 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    public sGameConfig gameConfig;
+    public string gameplayScene = "03 Gameplay" ;
+
     public void PlayGame()
     {
-        SceneManager.LoadScene("03 Gameplay");
+        gameConfig.LoadScene(gameplayScene);
     }
 }

@@ -9,6 +9,7 @@ public class CombatSceneManager : MonoBehaviour
     public sGameConfig gameConfig;
     public float tickTimer;
     public float tickTarget;
+    public string resultScreenName = "04 Result Screen";
 
     private void OnEnable()
     {
@@ -27,12 +28,16 @@ public class CombatSceneManager : MonoBehaviour
         GameEvents.SpawnGasPool.Invoke(gasPrefab, origin);
     }
 
-    private void OnGameOver(int player)
+    private void OnGameOver(int playerThatLose)
     {
         gameConfig.isGameOn = false;
-        Debug.Log($"GAME OVER , Player {player} Lose");
+        Debug.Log($"GAME OVER , Player {playerThatLose} Lose");
+        if (playerThatLose == 1)
+            gameConfig.playerWinId = 2;
+        else if  (playerThatLose == 2)
+            gameConfig.playerWinId = 1;
 
-        SceneManager.LoadScene("02 Menu");
+        gameConfig.LoadScene(resultScreenName);
     }
 
     private void Start()
